@@ -1,24 +1,16 @@
-async function main() {
-	let myPromise = new Promise(function (resolve, reject) {
-		let x = 0;
 
-		if (x == 0) {
+async function main()
+{
+	const promise: Promise<string> = new Promise((resolve, reject) =>
+	{
+		setTimeout(() =>
+		{
 			resolve("OK");
-		} else {
-			reject("Error");
-		}
+			reject("Error!");
+		});
 	});
 
-	myPromise.then(
-		function successValue(result) {
-			console.log(result);
-		},
-	)
-		.catch(
-			function errorValue(result) {
-				console.log(result);
-			}
-		);
+	promise.then(v => console.log("value: ", v))
+		.catch(error => console.log("error: ", error));
 }
-
 main();
